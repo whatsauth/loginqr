@@ -4,7 +4,7 @@
 go get -u all
 go mod tidy
 git tag
-git tag v0.0.3
+git tag v0.0.1
 git push origin --tags
-go list -m github.com/whatsauth/loginqr@v0.4.5
+go list -m github.com/whatsauth/loginqr@v0.0.1
 ```
