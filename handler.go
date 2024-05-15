@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func HandlerQRLogin(msg model.IteungMessage, WAKeyword string, WAPhoneNumber string, db *mongo.Database, WAAPIQRLogin string) (resp model.Response, err error) {
+func HandlerQRLogin(msg model.IteungMessage, WAKeyword string, WAPhoneNumber string, db *mongo.Database, WAAPIQRLogin string) (resp Response, err error) {
 	dt := &WhatsauthRequest{
 		Uuid:        GetUUID(msg, WAKeyword),
 		Phonenumber: msg.Phone_number,
@@ -22,7 +22,7 @@ func HandlerQRLogin(msg model.IteungMessage, WAKeyword string, WAPhoneNumber str
 	return
 }
 
-func WAAPIToken(phonenumber string, db *mongo.Database) (apitoken model.Profile, err error) {
+func WAAPIToken(phonenumber string, db *mongo.Database) (apitoken Profile, err error) {
 	filter := bson.M{"phonenumber": phonenumber}
 	apitoken, err = GetOneDoc[Profile](db, "profile", filter)
 
